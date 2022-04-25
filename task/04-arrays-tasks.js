@@ -23,7 +23,7 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
-   throw new Error('Not implemented');
+   return arr.indexOf(value);
 }
 
 /**
@@ -38,7 +38,14 @@ function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(len) {
-   throw new Error('Not implemented');
+   var arr=new Array(len);
+   arr.fill(0,0,len);
+   arr.filter((elem,ind,arr)=>{
+      arr[ind]=2*ind+1;
+   })
+   return arr;
+   //throw new Error('Not implemented');
+
 }
 
 
@@ -54,7 +61,11 @@ function generateOdds(len) {
  *    [] => [] 
  */
 function doubleArray(arr) {
-   throw new Error('Not implemented');
+   // throw new Error('Not implemented');
+   arr.filter(ele=>{
+      arr.push(ele)
+   })
+   return arr;
 }
 
 
@@ -70,7 +81,13 @@ function doubleArray(arr) {
  *    [] => [] 
  */
 function getArrayOfPositives(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   arr=arr.filter((ele,ind)=>{
+      if(ele>0){
+         return true;
+      }
+   })
+   return arr;
 }
 
 /**
@@ -85,7 +102,9 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccon' ] => [ 'cat', 'dog', 'racoon' ]
  */
 function getArrayOfStrings(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   arr=arr.filter(ele=>typeof ele==='string')
+   return arr;
 }
 
 /**
@@ -102,7 +121,11 @@ function getArrayOfStrings(arr) {
  *    [ false, 0, NaN, '', undefined ]   => [ ]
  */
 function removeFalsyValues(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   return arr.filter(ele=>{
+      if(ele)
+         return true
+   })
 }
 
 /**
@@ -116,7 +139,8 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   return arr.map(ele=>ele.toUpperCase())
 }
 
 
@@ -131,7 +155,8 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   return arr.map(ele=>ele.length);
 }
 
 /**
@@ -146,7 +171,9 @@ function getStringsLength(arr) {
  *    [ 1, 'b', 'c'], 0, 'x'  => [ 'x', 1, 'b', 'c' ]
  */
 function insertItem(arr, item, index) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   arr.splice(index,0,item);
+   return arr;
 }
 
 /**
@@ -160,7 +187,8 @@ function insertItem(arr, item, index) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'a', 'b', 'c' ]
  */
 function getHead(arr, n) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   return arr.slice(0,n);
 }
 
 
@@ -175,7 +203,9 @@ function getHead(arr, n) {
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
 function getTail(arr, n) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   var len=arr.length;
+   return arr.slice(len-n,len);
 }
 
 
@@ -200,7 +230,19 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   var str='';
+   arr.filter((ele,index,arr)=>{
+      ele.filter((subele,ind,ar)=>{
+         str+=subele;
+         if(ind!=ar.length-1){
+            str+=","
+          }
+      })
+      if(arr.length-1!=index)
+         str+='\n'
+   })
+   return str;
 }
 
 /**
@@ -215,7 +257,8 @@ function toCsvText(arr) {
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
 function toArrayOfSquares(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   return arr.map(ele=>ele**2)
 }
 
 
@@ -234,7 +277,11 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   var sum=0;
+   return arr.map(ele=>{sum+=ele;
+      return sum
+   })
 }
 
 /**
@@ -249,7 +296,13 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   if(arr.length<2){
+      return []
+   }
+   return arr.filter((ele,ind)=>{
+     if( ind%2!=0) return true;
+   });
 }
 
 
@@ -269,6 +322,7 @@ function getSecondItems(arr) {
  */
 function propagateItemsByPositionIndex(arr) {
    throw new Error('Not implemented');
+  
 }
 
 
@@ -286,7 +340,13 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   // arr=arr.map(ele=>ele+10)
+   // arr.sort()
+   // arr.reverse()
+   // //console.log(arr)
+   // arr= arr.map(ele=>ele-10);
+   arr.sort((a,b)=>b-a)//descending //a-b for ascending
+   return arr.slice(0,3)
 }
  
  
@@ -304,7 +364,12 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   var c=0
+   arr=arr.filter(ele=>{
+      if(ele>0 && typeof ele==='number')
+      c++;
+   })
+   return c;
 }
  
 /** 
@@ -337,7 +402,11 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   // var sum=0;
+   // arr.map(e=>sum+=e)
+   // return sum
+   return arr.reduce((sum,ele)=>sum+ele,0)
 }
  
 /** 
@@ -353,7 +422,14 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   var c=0;
+  arr.filter((e)=>{
+     if(!e){
+        c++;
+     }
+  })
+  return c;
 }
 
 /**
@@ -371,7 +447,14 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   let dict={item:0}
+   arr.filter(ele=>{
+      if(ele===item){
+         dict.item+=1
+      }
+   })
+   return dict.item
 }
 
 /**
@@ -386,7 +469,8 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   return arr.join(',')
 }
 
 
@@ -437,7 +521,18 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   var arr=Array.apply(null, Array(n)).map(Number.prototype.valueOf,0);
+   arr=arr.map(e=>Array.apply(null, Array(n)).map(Number.prototype.valueOf,0))
+   arr.filter((e,i)=>{
+      e.filter((sube,j)=>{
+         if(i==j)
+            arr[i][j]=1;
+         else
+            arr[i][j]=0;
+      })
+   })
+   return arr;
 }
 
 /**
@@ -454,7 +549,13 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+  // throw new Error('Not implemented');
+  var n=end-start+1;
+  var arr=Array.apply(null, Array(n)).map(Number.prototype.valueOf,0);
+  var sum=start;
+  return arr.map(e=>{
+     return sum++;
+  } );
 }
 
 /**
@@ -469,7 +570,15 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
+   var dict={}
+   var k=arr.filter((e)=>{
+      if(!dict[e]){
+         dict[e]=1
+         return e
+      }
+   })
+   return k;
 }
 
 /**
@@ -559,7 +668,13 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    var rot=0
+    if(arr.length%2==0){
+         return arr.slice(arr.length/2,arr.length).concat(arr.slice(0,arr.length/2))
+    }
+   return arr.slice(Math.floor(arr.length/2)+1,arr.length).concat(arr[Math.floor(arr.length/2)])
+            .concat(arr.slice(0,Math.floor(arr.length/2))); 
 }
 
 
