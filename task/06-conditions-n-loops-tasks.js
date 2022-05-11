@@ -138,7 +138,13 @@ function isTriangle(a,b,c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    throw new Error('Not implemented');
+   // throw new Error('Not implemented');
+   return !(
+    rect1.left + rect1.width < rect2.left ||
+    rect2.left + rect2.width < rect1.left ||
+    rect1.top + rect1.height < rect2.top ||
+    rect2.top + rect2.height < rect1.top
+);
 }
 
 
@@ -317,7 +323,19 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    ccn = [...String(ccn)].reverse();
+    ccn = ccn.reduce(function(sum, val, ind)
+    {
+        let dig = Number(val);
+        if(ind % 2)
+            dig *= 2;
+        sum += Math.floor(dig / 10);
+        sum += dig % 10;
+        return sum;
+    }, 0);
+    return (ccn * 3) % 10 == 0;
+    
 }
 
 
@@ -373,7 +391,27 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    let pair = {
+        '>': '<',
+        ')': '(',
+        ']': '[',
+        '}': '{'
+    }
+    let res = [...str].reduce(function(acc, x, ind)
+    {
+        if (['(', '{', '[', '<'].indexOf(x) != -1)
+            acc.push(x);
+        else
+        {
+            if (acc.length > 0 && acc[acc.length - 1] == pair[x])
+                acc.pop();
+            else
+                acc.push(x);
+        }
+        return acc;
+    }, []);
+    return res.length == 0;
 }
 
 
@@ -433,7 +471,8 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    //throw new Error('Not implemented');
+    return num.toString(n);
 }
 
 
